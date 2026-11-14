@@ -4,7 +4,12 @@ const SITE_NAME   = 'Rofa Painting';
 const SITE_PHONE  = '0948 708 703';
 const SITE_PHONE_E164 = '+421948708703';
 const SITE_EMAIL  = 'info@rofapainting.sk';
-const SITE_URL    = 'https://www.rofapainting.sk'; // zmeňte podľa skutočnej domény
+// Adresa webu sa určí automaticky podľa domény, na ktorej web beží.
+$__https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
+$__host = preg_replace('/[^a-z0-9.:-]/i', '', $_SERVER['HTTP_HOST'] ?? 'www.rofapainting.sk');
+define('SITE_URL', ($__https ? 'https' : 'http') . '://' . $__host);
+// Testovacie prostredie (subdoména clicki.sk, localhost, *.test) – vyhľadávače ho nemajú indexovať.
+define('IS_STAGING', (bool) preg_match('/(^|\.)clicki\.sk$|^localhost|\.test$/i', $__host));
 const MAIL_TO     = 'info@rofapainting.sk';
 // Odosielateľ musí byť adresa z vašej domény (Websupport to vyžaduje), inak mail nedoručí.
 const MAIL_FROM   = 'info@rofapainting.sk';

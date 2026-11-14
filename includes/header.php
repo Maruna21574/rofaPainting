@@ -21,6 +21,7 @@ $isService = isset($services[$page]);
 <title><?= e($title) ?></title>
 <meta name="description" content="<?= e($desc) ?>">
 <meta name="theme-color" content="#0e0e0e">
+<?php if (IS_STAGING): ?><meta name="robots" content="noindex, nofollow"><?php endif; ?>
 <link rel="canonical" href="<?= e($canonical) ?>">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/favicon.png">
@@ -29,6 +30,15 @@ $isService = isset($services[$page]);
 <meta property="og:description" content="<?= e($desc) ?>">
 <meta property="og:image" content="<?= SITE_URL ?>/assets/img/og.jpg">
 <meta property="og:locale" content="sk_SK">
+<meta property="og:site_name" content="Rofa Painting">
+<meta property="og:url" content="<?= e($canonical) ?>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rofa Painting – logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($title) ?>">
+<meta name="twitter:description" content="<?= e($desc) ?>">
+<meta name="twitter:image" content="<?= SITE_URL ?>/assets/img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
