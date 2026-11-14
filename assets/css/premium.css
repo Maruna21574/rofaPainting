@@ -1,0 +1,55 @@
+/* ===================== PRÉMIOVÉ VYLEPŠENIA ===================== */
+
+/* --- jemná filmová textúra a nábeh stránky --- */
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){body{animation:pageIn .6s ease both}}
+@keyframes pageIn{from{opacity:0}}
+
+/* --- otáčajúce sa slovo v nadpise --- */
+.rot{display:block;overflow:hidden;line-height:1.04;padding-bottom:.04em}
+.rot-w{display:inline-block;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .45s}
+.rot-w.out{transform:translateY(-110%);opacity:0}
+.rot-w.pre{transform:translateY(110%);opacity:0;transition:none}
+
+/* --- panely služieb --- */
+.panels{display:flex;gap:14px;height:540px}
+.panel{position:relative;flex:1;min-width:0;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#111;isolation:isolate;transition:flex .65s cubic-bezier(.2,.7,.2,1),border-color .4s}
+.p-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:grayscale(.9) brightness(.5);transform:scale(1.1);transition:filter .7s,transform .9s}
+.panel:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,14,14,.05) 25%,rgba(14,14,14,.94))}
+.panel.active{flex:3.6;border-color:var(--gold-d)}
+.panel.active .p-img{filter:grayscale(0) brightness(.85);transform:scale(1)}
+.p-num{position:absolute;top:22px;left:24px;font:700 1.1rem/1 var(--head);letter-spacing:.18em;color:var(--gold)}
+.p-body{position:absolute;left:0;right:0;bottom:0;padding:26px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.p-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;border:1px solid var(--gold-d);background:rgba(14,14,14,.7);color:var(--gold);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.p-ico .ico{width:24px;height:24px}
+.panel h3{font-size:clamp(1.6rem,2.4vw,2.2rem);line-height:1.02}
+.panel:not(.active) h3{writing-mode:vertical-rl;transform:rotate(180deg);font-size:1.5rem;white-space:nowrap;align-self:flex-start}
+.p-more{max-height:0;opacity:0;overflow:hidden;transition:max-height .6s ease,opacity .5s ease .1s}
+.panel.active .p-more{max-height:160px;opacity:1}
+.p-txt{display:block;color:#dcd8cd;margin-bottom:14px;max-width:34ch}
+.panel:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+@media (max-width:900px){
+  .panels{flex-direction:column;height:auto;gap:12px}
+  .panel,.panel.active{flex:none;height:240px}
+  .p-img,.panel.active .p-img{filter:grayscale(.2) brightness(.7);transform:none}
+  .panel:not(.active) h3{writing-mode:horizontal-tb;transform:none;font-size:1.7rem}
+  .p-more,.panel.active .p-more{max-height:none;opacity:1}
+  .p-body{padding:20px}
+  .p-txt{margin-bottom:8px}
+}
+
+/* --- videá sa samy prehrávajú --- */
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.vid.playing video{opacity:1}
+.vid .play{transition:opacity .35s}
+.vid.playing .play{opacity:0}
+.vid.playing:hover .play,.vid.playing:focus-visible .play{opacity:1}
+
+/* --- postup prác: časová os --- */
+.steps li{position:relative;transition:opacity .5s}
+.steps li:not(:last-child):after{content:"";position:absolute;left:19px;top:46px;bottom:-14px;width:2px;background:var(--line);transition:background .6s}
+.steps li:before{transition:background .5s,color .5s,box-shadow .5s}
+.js .steps li:not(.done):before{background:var(--bg3);color:var(--gold);box-shadow:inset 0 0 0 1.5px var(--gold-d)}
+.js .steps li:not(.done){opacity:.55}
+.steps li.done:before{box-shadow:0 0 0 6px rgba(201,160,61,.16)}
+.steps li.done:not(:last-child):after{background:linear-gradient(var(--gold),var(--gold-d))}

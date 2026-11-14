@@ -1,0 +1,36 @@
+/* ===== Panely služieb: plynulejší prechod pri hover (prepisuje premium.css) ===== */
+.panels{gap:12px}
+.panel{transition:flex .85s cubic-bezier(.22,.8,.2,1),border-color .5s ease,box-shadow .6s ease;will-change:flex}
+.panel.active{box-shadow:0 30px 60px -30px rgba(201,160,61,.45)}
+.p-img{transition:filter .9s ease,transform 1.2s cubic-bezier(.22,.8,.2,1)}
+
+/* obsah má pevnú šírku, aby sa pri zmene šírky panela text neprelamoval */
+.p-body{width:500px;max-width:none;transition:transform .85s cubic-bezier(.22,.8,.2,1)}
+
+/* zvislý názov (zatvorený panel) a vodorovný názov (otvorený panel) sa plynulo prelínajú */
+.panel:not(.active) h3{writing-mode:horizontal-tb;transform:none;font-size:clamp(1.6rem,2.4vw,2.2rem);white-space:normal;align-self:flex-start}
+.panel h3{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .7s cubic-bezier(.22,.8,.2,1)}
+.panel.active h3{opacity:1;transform:none;transition-delay:.18s}
+.p-vert{position:absolute;left:26px;bottom:26px;writing-mode:vertical-rl;transform:rotate(180deg);font:800 1.5rem/1 var(--head);letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;opacity:1;transition:opacity .4s ease .12s;z-index:1}
+.panel.active .p-vert{opacity:0;transition-delay:0s;transition-duration:.2s}
+
+/* ikona sa pri zatvorenom paneli posunie vyššie nad zvislý názov, aby sa nič neprekrývalo */
+.p-ico{transition:transform .85s cubic-bezier(.22,.8,.2,1),background .4s,border-color .4s}
+.panel:not(.active) .p-ico{transform:translateY(-250px)}
+.panel:hover .p-ico{border-color:var(--gold2)}
+
+/* popis sa rozbaľuje presne na svoju výšku */
+.p-more{display:grid;grid-template-rows:0fr;max-height:none;opacity:0;overflow:hidden;transition:grid-template-rows .7s cubic-bezier(.22,.8,.2,1),opacity .5s ease}
+.panel.active .p-more{grid-template-rows:1fr;max-height:none;opacity:1;transition-delay:.12s}
+.p-in{min-height:0;overflow:hidden;display:block}
+
+@media (max-width:900px){
+  .p-body{width:auto;max-width:none}
+  .panel h3,.panel:not(.active) h3{opacity:1;transform:none}
+  .p-vert{display:none}
+  .panel:not(.active) .p-ico{transform:none}
+  .p-more,.panel.active .p-more{grid-template-rows:1fr;opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .panel,.p-img,.p-body,.p-ico,.panel h3,.p-more,.p-vert{transition-duration:.01s!important;transition-delay:0s!important}
+}

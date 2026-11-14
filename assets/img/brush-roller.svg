@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c14"/><stop offset="1" stop-color="#101010"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2bd62"/><stop offset="1" stop-color="#a57f26"/></linearGradient>
+</defs>
+<rect width="600" height="700" rx="28" fill="url(#bg)"/>
+<!-- paint stripes -->
+<path d="M0 520c110-40 230 30 360-10s170-30 240-10v200H0z" fill="#c9a03d" opacity=".12"/>
+<path d="M-10 430C130 380 250 470 400 420s170-40 220-20" stroke="url(#g)" stroke-width="58" fill="none" stroke-linecap="round" opacity=".95"/>
+<path d="M-10 540C140 500 260 580 420 540s150-20 210-10" stroke="url(#g)" stroke-width="32" fill="none" stroke-linecap="round" opacity=".55"/>
+<!-- logo-style roller -->
+<g transform="translate(150 70)">
+<path d="M0 0h200v40" fill="none" stroke="url(#g)" stroke-width="14" stroke-linejoin="round"/>
+<text x="60" y="130" font-family="Barlow Condensed,Impact,sans-serif" font-weight="800" font-size="130" fill="url(#g)">RF</text>
+<rect x="30" y="170" width="260" height="76" rx="20" fill="url(#g)"/>
+<path d="M290 208h50a20 20 0 0 1 20 20v30a20 20 0 0 1-20 20h-110v50" fill="none" stroke="url(#g)" stroke-width="14" stroke-linejoin="round"/>
+<rect x="195" y="305" width="70" height="120" rx="22" fill="url(#g)"/>
+</g>
+</svg>

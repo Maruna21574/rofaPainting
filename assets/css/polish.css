@@ -1,0 +1,29 @@
+/* ===================== DOLADENIE: čo ešte oživí web ===================== */
+
+/* --- veľké obrysové slovo za nadpismi sekcií --- */
+.sec-head[data-bg]{position:relative;isolation:isolate}
+.sec-head[data-bg]:before{content:attr(data-bg);position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);font:800 clamp(4.5rem,15vw,11.5rem)/1 var(--head);text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(201,160,61,.15);z-index:-1;pointer-events:none}
+.sec-head.left[data-bg]:before{left:0;transform:translate(-4%,-52%)}
+@media (max-width:640px){.sec-head[data-bg]:before{font-size:4.2rem}}
+
+/* --- kurzor: jemný krúžok (len myš) --- */
+.cur{position:fixed;left:0;top:0;width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid rgba(226,189,98,.7);border-radius:50%;pointer-events:none;z-index:600;opacity:0;transition:opacity .3s,width .25s,height .25s,margin .25s,background .25s,border-color .25s;mix-blend-mode:normal}
+.cur.on{opacity:1}
+.cur.link{width:62px;height:62px;margin:-31px 0 0 -31px;background:rgba(201,160,61,.14);border-color:var(--gold2)}
+.cur.down{width:28px;height:28px;margin:-14px 0 0 -14px}
+
+/* --- návrat nahor --- */
+.totop{position:fixed;right:22px;bottom:24px;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--gold-d);background:rgba(14,14,14,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--gold2);display:grid;place-items:center;z-index:85;opacity:0;transform:translateY(14px);pointer-events:none;transition:.3s}
+.totop.show{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--gold);color:#111}
+.totop .ico{width:22px;height:22px;transform:rotate(-90deg)}
+@media (max-width:980px){.totop{right:auto;left:16px;bottom:18px;width:44px;height:44px}.page-kalkulacka .totop{bottom:84px}}
+
+/* --- často kladené otázky na úvodnej stránke --- */
+.faq-home{grid-template-columns:.8fr 1.2fr;align-items:start}
+.faq-home .sec-head p{margin-bottom:22px}
+.faq-home .faq details{background:var(--bg2)}
+@media (max-width:980px){.faq-home{grid-template-columns:1fr}}
+
+/* mobil: najprv text, potom video */
+@media (max-width:980px){.hero-media{order:0;margin:34px 0 0}}

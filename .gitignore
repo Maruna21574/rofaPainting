@@ -1,0 +1,5 @@
+_originaly/
+*.log
+Thumbs.db
+.DS_Store
+_t*.php
